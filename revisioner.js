@@ -370,7 +370,7 @@ var Revisioner = (function () {
             if (this.options.transformPath) {
                 // Transform path using client supplied transformPath callback,
                 pathReferenceReplace = this.options.transformPath.call(this, pathReferenceReplace, reference.path, reference.file, file);
-            } else if (this.options.prefix && pathReferenceReplace[0] === '/') {
+            } else if (this.options.prefix && pathReferenceReplace[0] === '/' && !( pathReferenceReplace.startsWith( '/modules' ) || pathReferenceReplace.startsWith( '/components' ) ) ) {
                 // Append with user supplied prefix
                 pathReferenceReplace = this.Tool.join_path_url(this.options.prefix, pathReferenceReplace);
             }
